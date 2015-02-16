@@ -48,3 +48,18 @@ test('visiting rooms in a cruel and infinite loop', function(assert) {
     assert.equal(find('p.room-description').text(), 'a cold and scary place');
   });
 });
+
+test('does not show nonexistent room links', function(assert){
+  assert.expect(4);
+  serverData.rooms = [
+    {id: 1, description: 'a cold and scary place', north: 2},
+    {id: 2, description: 'northward!', south: 1}
+  ];
+  visit('/rooms/1');
+  andThen(function(){
+    assert.equal(find('a:contains("N")').length, 1);
+    assert.equal(find('a:contains("W")').length, 0);
+    assert.equal(find('a:contains("E")').length, 0);
+    assert.equal(find('a:contains("S")').length, 0);
+  });
+});

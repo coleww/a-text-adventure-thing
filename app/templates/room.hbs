@@ -1,11 +1,19 @@
 <p class="room-description">{{model.description}}</p>
 
-{{link-to 'N' 'room' model.north}}
+{{#if model.north}}
+  {{link-to 'N' 'room' model.north}}
+{{/if}}
 
-{{link-to 'W' 'room' model.west}}
+{{#if model.west}}
+  {{link-to 'W' 'room' model.west}}
+{{/if}}
 
-{{link-to 'E' 'room' model.east}}
+{{#if model.east}}
+  {{link-to 'E' 'room' model.east}}
+{{/if}}
 
-{{link-to 'S' 'room' model.south}}
+{{#if model.south}}
+  {{link-to 'S' 'room' model.south}}
+{{/if}}
 
 {{outlet}}
