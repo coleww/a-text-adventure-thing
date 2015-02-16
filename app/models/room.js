@@ -1,9 +1,9 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  north: DS.belongsTo('room', {inverse: 'south'}),
-  south: DS.belongsTo('room', {inverse: 'north'}),
-  east: DS.belongsTo('room', {inverse: 'west'}),
-  west: DS.belongsTo('room', {inverse: 'east'}),
+  north: DS.belongsTo('room', {inverse: 'south', async: true}),
+  south: DS.belongsTo('room', {inverse: 'north', async: true}),
+  east: DS.belongsTo('room', {inverse: 'west', async: true}),
+  west: DS.belongsTo('room', {inverse: 'east', async: true}),
   description: DS.attr()
 });
