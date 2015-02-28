@@ -22,7 +22,7 @@
     "currentURL",
     "currentPath",
     "currentRouteName",
-    "serverData"
+    "server"
   ],
   "node": false,
   "browser": false,

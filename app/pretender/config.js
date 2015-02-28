@@ -3,75 +3,12 @@ export default function() {
   // this.namespace = '';    make this `api`, for example, if your API is namespaced
   // this.timing = 400;      delay for each request, automatically set to 0 during testing
 
-  this.stub('get', '/rooms/:id', function(store, request) {
+  this.get('/rooms/:id', function(store, request) {
     var roomId = +request.params.id;
     var room = store.find('room', roomId);
     return {
       room: room
     };
   });
-  /*
-    Routes
-  */
-  /*
-    GET shorthands
 
-    // Collections
-    this.stub('get', '/contacts');
-    this.stub('get', '/contacts', 'users');
-    this.stub('get', '/contacts', ['contacts', 'addresses']);
-
-    // Single objects
-    this.stub('get', '/contacts/:id');
-    this.stub('get', '/contacts/:id', 'user');
-    this.stub('get', '/contacts/:id', ['contact', 'addresses']);
-  */
-
-  /*
-    POST shorthands
-
-    this.stub('post', '/contacts');
-    this.stub('post', '/contacts', 'user'); // specify the type of resource to be created
-  */
-
-  /*
-    PUT shorthands
-
-    this.stub('put', '/contacts/:id');
-    this.stub('put', '/contacts/:id', 'user'); // specify the type of resource to be updated
-  */
-
-  /*
-    DELETE shorthands
-
-    this.stub('delete', '/contacts/:id');
-    this.stub('delete', '/contacts/:id', 'user'); // specify the type of resource to be deleted
-
-    // Single object + related resources. Make sure parent resource is first.
-    this.stub('delete', '/contacts/:id', ['contact', 'addresses']);
-  */
-
-  /*
-    Function fallback. Manipulate data in the store via
-
-      - store.find(key, id)
-      - store.findAll(key)
-      - store.findQuery(key, query)
-      - store.push(key, data)
-      - store.delete(key, id)
-
-    // Example: return a single object with related models
-    this.stub('get', '/contacts/:id', function(store, request) {
-      var contactId = +request.params.id;
-      var contact = store.find('contact', contactId);
-      var addresses = store.findAll('address')
-        .filterBy('contact_id', contactId);
-
-      return {
-        contact: contact,
-        addresses: addresses
-      };
-    });
-
-  */
 }
