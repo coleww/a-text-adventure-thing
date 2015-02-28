@@ -57,3 +57,19 @@ test('does not show nonexistent room links', function(assert){
     assert.equal(find('a.south').length, 0);
   });
 });
+
+test('shows brief name of linked rooms', function(assert){
+  assert.expect(3);
+  server.create('room', {name: 'home', description: 'a cold and scary place', north: 2, south: 3});
+  server.create('room', {name: 'hallway', south: 1, north: 3});
+  server.create('room', {name: 'darkened door', north: 1, south: 2});
+  visit('/rooms/1');
+  andThen(function(){
+    assert.equal(find('a.north:contains("hallway")').length, 1);
+    assert.equal(find('a.south:contains("darkened door")').length, 1);
+  });
+  click('a.north');
+  andThen(function(){
+    assert.equal(find('a.south:contains("home")').length, 1);
+  });
+});

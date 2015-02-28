@@ -5,5 +5,6 @@ export default DS.Model.extend({
   south: DS.belongsTo('room', {inverse: 'north', async: true}),
   east: DS.belongsTo('room', {inverse: 'west', async: true}),
   west: DS.belongsTo('room', {inverse: 'east', async: true}),
-  description: DS.attr()
+  description: DS.attr('string'),
+  name: DS.attr('string')
 });
