@@ -31,15 +31,15 @@ test('visiting rooms in a cruel and infinite loop', function(assert) {
   server.create('room', {description: 'northward!', south: 1, north: 3});
   server.create('room', {description: 'southward!', north: 1, south: 2});
   visit('/rooms/1');
-  click('a:contains("N")');
+  click('a.north');
   andThen(function() {
     assert.equal(find('p.room-description').text(), 'northward!');
   });
-  click('a:contains("N")');
+  click('a.north');
   andThen(function() {
     assert.equal(find('p.room-description').text(), 'southward!');
   });
-  click('a:contains("N")');
+  click('a.north');
   andThen(function() {
     assert.equal(find('p.room-description').text(), 'a cold and scary place');
   });
@@ -51,9 +51,9 @@ test('does not show nonexistent room links', function(assert){
   server.create('room', {description: 'northward!', south: 1});
   visit('/rooms/1');
   andThen(function(){
-    assert.equal(find('a:contains("N")').length, 1);
-    assert.equal(find('a:contains("W")').length, 0);
-    assert.equal(find('a:contains("E")').length, 0);
-    assert.equal(find('a:contains("S")').length, 0);
+    assert.equal(find('a.north').length, 1);
+    assert.equal(find('a.west').length, 0);
+    assert.equal(find('a.east').length, 0);
+    assert.equal(find('a.south').length, 0);
   });
 });
