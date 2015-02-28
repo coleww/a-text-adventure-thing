@@ -7,7 +7,7 @@ import Ember from 'ember';
 
 moduleForModel('room', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ["model:item"]
 });
 
 test('it handles inverted coordinates', function(assert) {
