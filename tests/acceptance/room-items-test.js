@@ -35,3 +35,14 @@ test('shows "content" of that item', function(assert){
     assert.equal(find('p.item-description').text().replace(/^\s+|\s+$/g, ''), 'a box...says "coca-cola" on the side.');
   });
 });
+
+test('links back to parent room', function(assert){
+  assert.expect(2);
+  var item = server.create('item');
+  var room = server.create('room', {name: 'darkness', items: [item.id]});
+  visit('/rooms/'+room.id+'/item/'+item.id);
+  andThen(function(){
+    assert.equal(find('a.back').text(), 'back');
+    assert.equal(find('a.back').attr('href'), '/rooms/'+room.id);
+  });
+});
