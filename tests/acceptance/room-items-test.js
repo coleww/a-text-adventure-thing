@@ -25,3 +25,13 @@ test('shows linked items in room', function(assert){
     assert.equal(find('a.item').text(), 'a lumpy box of chocolates');
   });
 });
+
+test('shows "content" of that item', function(assert){
+  assert.expect(1);
+  var item = server.create('item', {name: 'a box', description: 'says "coca-cola" on the side.'});
+  var room = server.create('room', {description: 'gazing into the abyss', items: [item.id]});
+  visit('/rooms/'+room.id+'/item/'+item.id);
+  andThen(function(){
+    assert.equal(find('p.item-description').text().replace(/^\s+|\s+$/g, ''), 'a box...says "coca-cola" on the side.');
+  });
+});
