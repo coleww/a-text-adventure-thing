@@ -1,0 +1,8 @@
+<p class="room-description">you are {{model.description}}.
+  {{#if model.items}}
+    you see
+    {{#each item in model.items}}
+      {{link-to item.name 'room.item' model item class="item"}}.
+    {{/each}}
+  {{/if}}
+</p>
