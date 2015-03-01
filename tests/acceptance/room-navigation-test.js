@@ -17,31 +17,31 @@ module('Acceptance: RoomNavigation', {
 test('visiting a room', function(assert) {
   assert.expect(1);
 
-  server.create('room', {description: 'a cold and scary place'});
+  server.create('room', {description: 'in a cold and scary place'});
   visit('/rooms/1');
 
   andThen(function() {
-    assert.equal(find('p.room-description').text(), 'a cold and scary place');
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are in a cold and scary place. ');
     // ...
   });
 });
 
 test('visiting rooms in a cruel and infinite loop', function(assert) {
-  server.create('room', {description: 'a cold and scary place', north: 2, south: 3});
-  server.create('room', {description: 'northward!', south: 1, north: 3});
-  server.create('room', {description: 'southward!', north: 1, south: 2});
+  server.create('room', {description: 'in a cold and scary place', north: 2, south: 3});
+  server.create('room', {description: 'in the north', south: 1, north: 3});
+  server.create('room', {description: 'in the south', north: 1, south: 2});
   visit('/rooms/1');
   click('a.north');
   andThen(function() {
-    assert.equal(find('p.room-description').text(), 'northward!');
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are in the north. ');
   });
   click('a.north');
   andThen(function() {
-    assert.equal(find('p.room-description').text(), 'southward!');
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are in the south. ');
   });
   click('a.north');
   andThen(function() {
-    assert.equal(find('p.room-description').text(), 'a cold and scary place');
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are in a cold and scary place. ');
   });
 });
 
@@ -71,5 +71,16 @@ test('shows brief name of linked rooms', function(assert){
   click('a.north');
   andThen(function(){
     assert.equal(find('a.south:contains("home")').length, 1);
+  });
+});
+
+test('shows items in room', function(assert){
+  assert.expect(1);
+  var item = server.create('item', {name: 'a lumpy box of chocolates'});
+  server.create('room', {description: 'gazing into the abyss', items: [item.id]});
+  visit('/rooms/1');
+  var expected = "you are gazing into the abyss. you see a lumpy box of chocolates. ";
+  andThen(function(){
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), expected);
   });
 });
