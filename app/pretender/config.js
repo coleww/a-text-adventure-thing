@@ -11,4 +11,12 @@ export default function() {
     };
   });
 
+  this.get('/items/:id', function(store, request){
+    var itemId = +request.params.id;
+    var item = store.find('item', itemId);
+    return {
+      item: item
+    };
+  });
+
 }
