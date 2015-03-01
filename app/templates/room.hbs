@@ -1,17 +1,35 @@
-{{#if model.north}}
-  {{link-to model.north.name 'room' model.north class="north"}}
-{{/if}}
-
-{{#if model.west}}
-  {{link-to model.west.name 'room' model.west class="west"}}
-{{/if}}
-
-{{#if model.east}}
-  {{link-to model.east.name 'room' model.east class="east"}}
-{{/if}}
-
-{{#if model.south}}
-  {{link-to model.south.name 'room' model.south class="south"}}
-{{/if}}
-
-{{outlet}}
+<table class="room-navigation">
+  <tr>
+    <td></td>
+    <td>
+      {{#if model.north}}
+        {{link-to model.north.name 'room' model.north class="north"}}
+      {{/if}}
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>
+      {{#if model.west}}
+        {{link-to model.west.name 'room' model.west class="west"}}
+      {{/if}}
+    </td>
+    <td class="room-detail">
+      {{outlet}}
+    </td>
+    <td>
+      {{#if model.east}}
+        {{link-to model.east.name 'room' model.east class="east"}}
+      {{/if}}
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      {{#if model.south}}
+        {{link-to model.south.name 'room' model.south class="south"}}
+      {{/if}}
+    </td>
+    <td></td>
+  </tr>
+</table>
