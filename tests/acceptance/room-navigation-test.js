@@ -73,15 +73,3 @@ test('shows brief name of linked rooms', function(assert){
     assert.equal(find('a.south:contains("home")').length, 1);
   });
 });
-
-test('shows linked items in room', function(assert){
-  assert.expect(2);
-  var item = server.create('item', {name: 'a lumpy box of chocolates'});
-  server.create('room', {description: 'gazing into the abyss', items: [item.id]});
-  visit('/rooms/1');
-  var expected = 'you are gazing into the abyss. you see a lumpy box of chocolates. ';
-  andThen(function(){
-    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), expected);
-    assert.equal(find('a.item').text(), 'a lumpy box of chocolates');
-  });
-});
