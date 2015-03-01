@@ -1,7 +1,22 @@
 # A-dungeon-client
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+hyper-"text based" adventure game
+
+CURRENT GOAL:
+
+- navigate through some rooms,
+- find a key,
+- use it to open a door and get to a new area.
+
+FUTURE:
+
+- some sort of persistent session object thing to store user health, inventory, etc.
+- server will eventually bear responsibility of ensuring user only GET's rooms they can access.
+- server might also do some of the magic (like trying to enter a room w/o the key gives you a 401)
+
+------------------------------------------------------
+
+_________________________________________________________
 
 ## Prerequisites
 
