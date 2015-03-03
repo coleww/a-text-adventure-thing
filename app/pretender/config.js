@@ -19,4 +19,12 @@ export default function() {
     };
   });
 
+  this.get('/keys/:id', function(store, request){
+    var keyId = +request.params.id;
+    var key = store.find('key', keyId);
+    return {
+      key: key
+    };
+  });
+
 }
