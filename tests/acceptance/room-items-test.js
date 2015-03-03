@@ -46,3 +46,21 @@ test('links back to parent room', function(assert){
     assert.equal(find('a.back').attr('href'), '/rooms/'+room.id);
   });
 });
+
+test('shows keys hidden in that item', function(assert){
+  assert.expect(4);
+  var key = server.create('key', {description: 'a rusty old key with a peace sign etched into it'});
+  var item = server.create('item', {key: key.id});
+  var room = server.create('room', {description: 'gazing into the abyss', items: [item.id]});
+  visit('/rooms/'+room.id+'/item/'+item.id);
+  andThen(function(){
+    assert.equal(find('.inventory .keys').text().replace(/^\s+|\s+$/g, ''), 'Keys: 0');
+    assert.equal(find('a.key').text().replace(/^\s+|\s+$/g, ''), 'a rusty old key with a peace sign etched into it');
+  });
+  click('a.key');
+  andThen(function(){
+    assert.equal(find('a.key').size(), 0);
+    assert.equal(find('.inventory .keys').text().replace(/^\s+|\s+$/g, ''), 'Keys: 1');
+    // stop()
+  });
+});

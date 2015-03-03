@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Object.extend({
-  stuff: ["a ball of yarn", "eleven macadamia nuts"]
+  stuff: ["a ball of yarn", "eleven macadamia nuts"],
+  keys: Ember.A()
 });

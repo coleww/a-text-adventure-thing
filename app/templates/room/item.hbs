@@ -1,5 +1,13 @@
 <p class="item-description">
   {{model.name}}...{{model.description}}
 </p>
-
+<p class="item-contents">
+  {{#if model.key}}
+    There is
+    <a class="key" href="" {{action "takeKey" model.key}}>
+      {{model.key.description}}
+    </a>
+    inside.
+  {{/if}}
+</p>
 {{link-to 'back' 'room' room class="back"}}
