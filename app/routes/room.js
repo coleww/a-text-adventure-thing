@@ -6,8 +6,9 @@ export default Ember.Route.extend({
     return this.store.find('room', params.room_id);
   },
   afterModel: function(model, transition){
-    if(model.get('locked')){
-      this.get('inventory').set('message', 'You need a key to get in there!');
+    var inventory = this.get('inventory');
+    if(model.get('locked') && !inventory.hasKey(model.get('id'))){
+      inventory.set('message', 'You need a key to get in there!');
       transition.abort();
     }
   }

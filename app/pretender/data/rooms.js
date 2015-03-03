@@ -36,7 +36,9 @@ export default [
     name: 'junkyard',
     east: 1
   },
-  {id: 6,
+  {
+    id: 6,
+    description: 'in a shed',
     name: 'a locked shed',
     north: 4,
     locked: true

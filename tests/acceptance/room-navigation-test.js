@@ -75,13 +75,21 @@ test('shows brief name of linked rooms', function(assert){
 });
 
 test('room is inaccessible without its key', function(assert){
-  assert.expect(2);
-  var locked_room = server.create('room', {locked: true});
-  var room = server.create('room', {description: 'a boring hallway', south: locked_room.id});
+  assert.expect(3);
+  var key = server.create('key', {description: 'a huge key', room_id: 1});
+  var item = server.create('item', {name: 'a void', key: key.id});
+  var locked_room = server.create('room', {description: "awesome", locked: true});
+  var room = server.create('room', {description: 'a boring hallway', south: locked_room.id, items: [item.id]});
   visit('/rooms/'+room.id);
   click('a.south');
   andThen(function(){
-    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are a boring hallway. ');
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are a boring hallway. you see a void. ');
     assert.equal(find('div.messages').text().replace(/^\s+|\s+$/g, ''), 'You need a key to get in there!');
+  });
+  click('a.item');
+  click('a.key');
+  click('a.south');
+  andThen(function(){
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are awesome. ');
   });
 });
