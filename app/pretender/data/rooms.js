@@ -27,7 +27,8 @@ export default [
     id: 4,
     description: 'resting in a lovely garden surrounded by walls.',
     name: 'inner gate',
-    west: 1
+    west: 1,
+    south: 6
   },
   {
     id: 5,
@@ -35,4 +36,9 @@ export default [
     name: 'junkyard',
     east: 1
   },
+  {id: 6,
+    name: 'a locked shed',
+    north: 4,
+    locked: true
+  }
 ];

@@ -7,5 +7,6 @@ export default EP.Factory.extend({
   west: null,
   south: null,
   east: null,
-  item_ids: []
+  item_ids: [],
+  locked: false
 });

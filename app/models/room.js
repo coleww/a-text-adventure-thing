@@ -7,5 +7,6 @@ export default DS.Model.extend({
   west: DS.belongsTo('room', {inverse: 'east', async: true}),
   description: DS.attr('string'),
   name: DS.attr('string'),
-  items: DS.hasMany('item', {async: true})
+  items: DS.hasMany('item', {async: true}),
+  locked: DS.attr('boolean', {defaultValue: false})
 });
