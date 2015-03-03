@@ -61,6 +61,5 @@ test('shows keys hidden in that item', function(assert){
   andThen(function(){
     assert.equal(find('a.key').size(), 0);
     assert.equal(find('.inventory .keys').text().replace(/^\s+|\s+$/g, ''), 'Keys: 1');
-    // stop()
   });
 });
