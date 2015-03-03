@@ -11,5 +11,10 @@ export default Ember.Route.extend({
       inventory.set('message', 'You need a key to get in there!');
       transition.abort();
     }
+  },
+  actions: {
+    didTransition: function(){
+      this.get('inventory').set('message', '');
+    }
   }
 });

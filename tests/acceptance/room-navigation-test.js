@@ -93,3 +93,20 @@ test('room is inaccessible without its key', function(assert){
     assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are awesome. ');
   });
 });
+
+test('locked room messages go away', function(assert){
+  assert.expect(3);
+  var locked_room = server.create('room', {description: "awesome", locked: true});
+  var other_room = server.create('room');
+  var room = server.create('room', {description: 'a boring hallway', south: locked_room.id, north: other_room.id});
+  visit('/rooms/'+room.id);
+  click('a.south');
+  andThen(function(){
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are a boring hallway. ');
+    assert.equal(find('div.messages').text().replace(/^\s+|\s+$/g, ''), 'You need a key to get in there!');
+  });
+  click('a.north');
+  andThen(function(){
+    assert.equal(find('div.messages').text().replace(/^\s+|\s+$/g, ''), '');
+  });
+});
