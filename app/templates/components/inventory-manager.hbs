@@ -3,16 +3,47 @@
 </div>
 <div>
   <h3>Inventory</h3>
-  <span class="keys">
-    Keys: {{numKeys}}
+  <span class="key-count">
+    <a href="" {{action "showKeys"}} {{bind-attr class="showingKeys:inventory-active"}}>
+      Keys:
+    </a>
+    {{numKeys}}
   </span>
-  <ul class="things">
-    {{#each thing in inventory.things}}
-      <li class="thing">
-        <a href="" {{action "showThing" thing}}>
-          {{thing.name}}
-        </a>
-      </li>
-    {{/each}}
-  </ul>
+  <span class="thing-count">
+    <a href="" {{action "showThings"}} {{bind-attr class="showingThings:inventory-active"}}>
+      Things:
+    </a>
+    {{numThings}}
+  </span>
+  {{#if showingKeys}}
+    <ul class="keys">
+      {{#if hasKeys}}
+        {{#each key in inventory.keys}}
+          <li class="key">
+            #{{key.room_id}}: {{key.description}}
+          </li>
+        {{/each}}
+      {{else}}
+        <li class="key">
+          Empty...
+        </li>
+      {{/if}}
+    </ul>
+  {{else}}
+    <ul class="things">
+      {{#if hasThings}}
+        {{#each thing in inventory.things}}
+          <li class="thing">
+            <a href="" {{action "showThing" thing}}>
+              {{thing.name}}
+            </a>
+          </li>
+        {{/each}}
+      {{else}}
+        <li class="thing">
+          Empty...
+        </li>
+      {{/if}}
+    </ul>
+  {{/if}}
 </div>

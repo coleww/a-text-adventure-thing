@@ -54,29 +54,30 @@ test('shows keys hidden in that item', function(assert){
   var room = server.create('room', {description: 'gazing into the abyss', items: [item.id]});
   visit('/rooms/'+room.id+'/item/'+item.id);
   andThen(function(){
-    assert.equal(find('.inventory .keys').text().replace(/^\s+|\s+$/g, ''), 'Keys: 0');
+    assert.equal(find('.inventory .key-count').text().replace(/^\s+|\s+$/g, '').replace(/\s+/g, " "), 'Keys: 0');
     assert.equal(find('a.key').text().replace(/^\s+|\s+$/g, ''), 'a rusty old key with a peace sign etched into it');
   });
   click('a.key');
   andThen(function(){
     assert.equal(find('a.key').size(), 0);
-    assert.equal(find('.inventory .keys').text().replace(/^\s+|\s+$/g, ''), 'Keys: 1');
+    assert.equal(find('.inventory .key-count').text().replace(/^\s+|\s+$/g, '').replace(/\s+/g, " "), 'Keys: 1');
   });
 });
 
 test('shows things hidden in that item', function(assert){
-  assert.expect(4);
+  assert.expect(5);
   var thing = server.create('thing', {name: 'some sort of tool or treasure or idk'});
   var item = server.create('item', {things: [thing.id]});
   var room = server.create('room', {items: [item.id]});
   visit('/rooms/'+room.id+'/item/'+item.id);
   andThen(function(){
-    assert.equal(find('ul.things li').size(), 0);
+    assert.equal(find('.inventory .thing-count').text().replace(/^\s+|\s+$/g, '').replace(/\s+/g, " "), 'Things: 0');
     assert.equal(find('a.thing').text().replace(/^\s+|\s+$/g, ''), 'some sort of tool or treasure or idk');
   });
   click('a.thing');
   andThen(function(){
     assert.equal(find('a.thing').size(), 0);
     assert.equal(find('ul.things li').text().replace(/^\s+|\s+$/g, ''), 'some sort of tool or treasure or idk');
+    assert.equal(find('.inventory .thing-count').text().replace(/^\s+|\s+$/g, '').replace(/\s+/g, " "), 'Things: 1');
   });
 });
