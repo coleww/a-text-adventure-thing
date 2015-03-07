@@ -9,5 +9,11 @@
     </a>
     inside.
   {{/if}}
+  {{#each thing in model.things}}
+    You see
+    <a class="thing" href="" {{action "takeThing" thing}}>
+      {{thing.name}}
+    </a>
+  {{/each}}
 </p>
 {{link-to 'back' 'room' room class="back"}}

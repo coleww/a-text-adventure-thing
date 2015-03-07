@@ -5,10 +5,10 @@ Inventory
 <span class="keys">
   Keys: {{numKeys}}
 </span>
-<ul>
-  {{#each thing in inventory.stuff}}
+<ul class="things">
+  {{#each thing in inventory.things}}
     <li>
-      {{thing}}
+      {{thing.name}}
     </li>
   {{/each}}
 </ul>

@@ -63,3 +63,20 @@ test('shows keys hidden in that item', function(assert){
     assert.equal(find('.inventory .keys').text().replace(/^\s+|\s+$/g, ''), 'Keys: 1');
   });
 });
+
+test('shows things hidden in that item', function(assert){
+  assert.expect(4);
+  var thing = server.create('thing', {name: 'some sort of tool or treasure or idk'});
+  var item = server.create('item', {things: [thing.id]});
+  var room = server.create('room', {items: [item.id]});
+  visit('/rooms/'+room.id+'/item/'+item.id);
+  andThen(function(){
+    assert.equal(find('ul.things li').size(), 0);
+    assert.equal(find('a.thing').text().replace(/^\s+|\s+$/g, ''), 'some sort of tool or treasure or idk');
+  });
+  click('a.thing');
+  andThen(function(){
+    assert.equal(find('a.thing').size(), 0);
+    assert.equal(find('ul.things li').text().replace(/^\s+|\s+$/g, ''), 'some sort of tool or treasure or idk');
+  });
+});

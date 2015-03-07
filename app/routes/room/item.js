@@ -13,6 +13,10 @@ export default Ember.Route.extend({
     takeKey: function(key){
       this.get("inventory.keys").pushObject(key);
       this.currentModel.set("key", null);
+    },
+    takeThing: function(thing){
+      this.get("inventory.things").pushObject(thing);
+      this.currentModel.get("things").removeObject(thing);
     }
   }
 });
