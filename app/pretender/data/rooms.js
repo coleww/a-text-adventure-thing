@@ -11,7 +11,7 @@ export default [
   },
   {
     id: 2,
-    description: 'at the entrance to town, shud u stay or shud u go?',
+    description: 'at the entrance to town...',
     name: 'main gate',
     south: 1,
     north: 3
@@ -34,7 +34,8 @@ export default [
     id: 5,
     description: 'surrounded by garbage as far as the eye can see.',
     name: 'junkyard',
-    east: 1
+    east: 1,
+    items: [2]
   },
   {
     id: 6,

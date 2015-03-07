@@ -27,4 +27,12 @@ export default function() {
     };
   });
 
+  this.get('/things/:id', function(store, request){
+    var thingId = +request.params.id;
+    var thing = store.find('thing', thingId);
+    return {
+      thing: thing
+    };
+  });
+
 }
