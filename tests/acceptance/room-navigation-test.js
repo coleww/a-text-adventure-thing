@@ -96,8 +96,8 @@ test('room is inaccessible without its key', function(assert){
 
 test('locked room messages go away', function(assert){
   assert.expect(3);
-  var locked_room = server.create('room', {description: "awesome", locked: true});
   var other_room = server.create('room');
+  var locked_room = server.create('room', {locked: true});
   var room = server.create('room', {description: 'a boring hallway', south: locked_room.id, north: other_room.id});
   visit('/rooms/'+room.id);
   click('a.south');
