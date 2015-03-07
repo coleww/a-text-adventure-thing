@@ -1,6 +1,7 @@
 export default [
   {
     id: 1,
-    name: 'a potato'
+    name: 'potato',
+    description: 'suitable replacement for a football'
   }
 ];

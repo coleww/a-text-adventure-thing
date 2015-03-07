@@ -8,8 +8,10 @@
   </span>
   <ul class="things">
     {{#each thing in inventory.things}}
-      <li>
-        {{thing.name}}
+      <li class="thing">
+        <a href="" {{action "showThing" thing}}>
+          {{thing.name}}
+        </a>
       </li>
     {{/each}}
   </ul>
