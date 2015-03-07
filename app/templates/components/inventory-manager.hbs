@@ -4,13 +4,13 @@
 <div>
   <h3>Inventory</h3>
   <span class="key-count">
-    <a href="" {{action "showKeys"}} {{bind-attr class="showingKeys:inventory-active"}}>
+    <a href="" {{action "showKeys"}} class="{{if showingKeys 'inventory-active'}}">
       Keys:
     </a>
     {{numKeys}}
   </span>
   <span class="thing-count">
-    <a href="" {{action "showThings"}} {{bind-attr class="showingThings:inventory-active"}}>
+    <a href="" {{action "showThings"}} class="{{if showingThings 'inventory-active'}}">
       Things:
     </a>
     {{numThings}}
