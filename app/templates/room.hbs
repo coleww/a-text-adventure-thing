@@ -1,7 +1,7 @@
 <table class="room-navigation">
   <tr>
     <td></td>
-    <td>
+    <td class="door">
       {{#if model.north}}
         {{link-to model.north.name 'room' model.north class="north"}}
       {{/if}}
@@ -9,7 +9,7 @@
     <td></td>
   </tr>
   <tr>
-    <td>
+    <td class="door">
       {{#if model.west}}
         {{link-to model.west.name 'room' model.west class="west"}}
       {{/if}}
@@ -17,7 +17,7 @@
     <td class="room-detail">
       {{outlet}}
     </td>
-    <td>
+    <td class="door">
       {{#if model.east}}
         {{link-to model.east.name 'room' model.east class="east"}}
       {{/if}}
@@ -25,7 +25,7 @@
   </tr>
   <tr>
     <td></td>
-    <td>
+    <td class="door">
       {{#if model.south}}
         {{link-to model.south.name 'room' model.south class="south"}}
       {{/if}}

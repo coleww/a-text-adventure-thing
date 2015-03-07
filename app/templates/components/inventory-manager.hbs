@@ -1,14 +1,16 @@
 <div class="messages">
   {{inventory.message}}
 </div>
-Inventory
-<span class="keys">
-  Keys: {{numKeys}}
-</span>
-<ul class="things">
-  {{#each thing in inventory.things}}
-    <li>
-      {{thing.name}}
-    </li>
-  {{/each}}
-</ul>
+<div class="inventory">
+  <h3>Inventory</h3>
+  <span class="keys">
+    Keys: {{numKeys}}
+  </span>
+  <ul class="things">
+    {{#each thing in inventory.things}}
+      <li>
+        {{thing.name}}
+      </li>
+    {{/each}}
+  </ul>
+</div>
