@@ -2,19 +2,9 @@
 
 hyper-"text based" adventure game
 
-CURRENT GOAL:
-
-- navigate through some rooms,
-- find a key,
-- use it to open a door and get to a new area.
-
-FUTURE:
-
-- some sort of persistent session object thing to store user health, inventory, etc.
-- server will eventually bear responsibility of ensuring user only GET's rooms they can access.
-- server might also do some of the magic (like trying to enter a room w/o the key gives you a 401)
-
 ------------------------------------------------------
+
+![demo](./demo.gif)
 
 _________________________________________________________
 
