@@ -16,7 +16,7 @@ export default [
   {
     id: 3,
     name: 'an old boot',
-    description: '',
+    description: 'someone took a bite out of it',
     room: 3,
     treasure: 1
   }
