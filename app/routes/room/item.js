@@ -17,6 +17,10 @@ export default Ember.Route.extend({
     takeThing: function(thing){
       this.get("inventory.things").pushObject(thing);
       this.currentModel.get("things").removeObject(thing);
+    },
+    takeTreasure: function(treasure){
+      this.get("inventory").incrementProperty("coins", treasure.get("value"));
+      this.currentModel.set("treasure", null);
     }
   }
 });

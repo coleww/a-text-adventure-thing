@@ -10,6 +10,8 @@ export default Ember.Component.extend({
   showingKeys: false,
   showingThings: Ember.computed.not('showingKeys'),
 
+  numCoins: Ember.computed.alias('inventory.coins'),
+
   actions: {
     showThing: function(thing){
       this.get('inventory').set('message', 'A '+thing.get('name')+' - '+thing.get('description'));
