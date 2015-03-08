@@ -21,7 +21,8 @@ export default [
     description: 'staring at the edge of the planet. You feel deja vu.',
     name: 'main road',
     north: 1,
-    south: 2
+    south: 2,
+    items: [3]
   },
   {
     id: 4,

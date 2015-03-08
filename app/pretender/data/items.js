@@ -12,5 +12,12 @@ export default [
     description: 'covered in beetles',
     room: 5,
     things: [1]
+  },
+  {
+    id: 3,
+    name: 'an old boot',
+    description: '',
+    room: 3,
+    treasure: 1
   }
 ];

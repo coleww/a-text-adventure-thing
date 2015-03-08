@@ -35,4 +35,12 @@ export default function() {
     };
   });
 
+  this.get('/treasures/:id', function(store, request){
+    var treasureId = +request.params.id;
+    var treasure = store.find('treasure', treasureId);
+    return {
+      treasure: treasure
+    };
+  });
+
 }
