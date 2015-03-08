@@ -2,7 +2,7 @@
   {{#if model.items}}
     you see
     {{#each item in model.items}}
-      {{link-to item.name 'room.item' model item class="item"}}.
+      {{link-to item.name 'room.item' model item.id class="item"}}.
     {{/each}}
   {{/if}}
 </p>

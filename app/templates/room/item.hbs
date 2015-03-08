@@ -1,25 +1,25 @@
 <p class="item-description">
-  {{model.name}}...{{model.description}}
+  {{model.item.name}}...{{model.item.description}}
 </p>
 <p class="item-contents">
-  {{#if model.key}}
+  {{#if model.item.key}}
     There is
-    <a class="key" href="" {{action "takeKey" model.key}}>
-      {{model.key.description}}
+    <a class="key" href="" {{action "takeKey" model.item.key}}>
+      {{model.item.key.description}}
     </a>
     inside.
   {{/if}}
-  {{#each thing in model.things}}
+  {{#each thing in model.item.things}}
     You see
     <a class="thing" href="" {{action "takeThing" thing}}>
       {{thing.name}}
     </a>
   {{/each}}
-  {{#if model.treasure}}
+  {{#if model.item.treasure}}
     You find
-    <a class="treasure" href="" {{action "takeTreasure" model.treasure}}>
-      {{model.treasure.description}}
+    <a class="treasure" href="" {{action "takeTreasure" model.item.treasure}}>
+      {{model.item.treasure.description}}
     </a>!
   {{/if}}
 </p>
-{{link-to 'back' 'room' room class="back"}}
+{{link-to 'back' 'room' model.room class="back"}}
