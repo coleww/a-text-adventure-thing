@@ -5,7 +5,7 @@ import {
 
 moduleForModel('key', {
   // Specify the other units that are required for this test.
-  needs: ["model:item", "model:room", "model:thing"]
+  needs: []
 });
 
 test('it exists', function(assert) {
