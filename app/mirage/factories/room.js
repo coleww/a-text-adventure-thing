@@ -1,6 +1,6 @@
-import EP from 'ember-pretenderify';
+import Mirage from 'ember-cli-mirage';
 
-export default EP.Factory.extend({
+export default Mirage.Factory.extend({
   description: 'a cold and scary place',
   name: 'door',
   north: null,
