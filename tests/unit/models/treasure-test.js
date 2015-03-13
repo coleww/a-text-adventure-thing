@@ -3,10 +3,7 @@ import {
   test
 } from 'ember-qunit';
 
-moduleForModel('treasure', {
-  // Specify the other units that are required for this test.
-  needs: []
-});
+moduleForModel('treasure', {integration: true});
 
 test('it exists', function(assert) {
   var model = this.subject();
