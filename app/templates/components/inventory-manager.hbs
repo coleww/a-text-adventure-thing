@@ -37,9 +37,15 @@
       {{#if hasThings}}
         {{#each thing in inventory.things}}
           <li class="thing">
-            <a href="" {{action "showThing" thing}}>
-              {{thing.name}}
-            </a>
+            {{#if selling}}
+              <a href="" {{action "sellThing" thing}}>
+                {{thing.name}} - {{thing.value}} coins
+              </a>
+            {{else}}
+              <a href="" {{action "showThing" thing}}>
+                {{thing.name}}
+              </a>
+            {{/if}}
           </li>
         {{/each}}
       {{else}}
