@@ -40,4 +40,11 @@ export default function() {
     };
   });
 
+  this.get('/merchants/:id', function(db, request){
+    var merchantId = +request.params.id;
+    var merchant = db.merchants.find(merchantId);
+    return {
+      merchant: merchant
+    };
+  });
 }
