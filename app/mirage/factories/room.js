@@ -7,6 +7,5 @@ export default Mirage.Factory.extend({
   west: null,
   south: null,
   east: null,
-  item_ids: [],
   locked: false
 });
