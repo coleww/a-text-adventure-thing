@@ -1,8 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Object.extend({
-  things: Ember.A(),
-  keys: Ember.A(),
+  init: function(){
+    this._super();
+    this.set('things', Ember.A());
+    this.set('keys', Ember.A());
+  },
+  things: null,
+  keys: null,
   coins: 0,
   message: "", // TODO: this should be it's own object...thing...
   hasKey: function(room_id){
