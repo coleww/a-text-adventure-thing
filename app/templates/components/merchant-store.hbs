@@ -1,11 +1,16 @@
 <p class="greeting">
   the {{merchant.name}} says "{{merchant.description}}"
 </p>
-
-{{#each merchant.things as |thing|}}
-  <a class="thing" {{action "buy" thing}}>
-    {{thing.name}} - {{thing.value}} coins
-  </a>
-{{/each}}
-
-<a class="sell" {{action "sell"}}>sell me yr treasures!</a>
+<h5>BUY</h5>
+<ul>
+  {{#each merchant.things as |thing|}}
+    <li>
+      <a class="thing" href="" {{action "buy" thing}}>
+        {{thing.name}} - {{thing.value}} coins
+      </a>
+    </li>
+  {{/each}}
+</ul>
+<hr />
+<a class="sell" href="" {{action "sell"}}>sell me yr treasures!</a>
+<hr />
