@@ -15,6 +15,7 @@ export default Ember.Route.extend({
   actions: {
     didTransition: function(){
       this.get('inventory').set('message', '');
+      this.get('inventory').set('selling', false);
     }
   }
 });

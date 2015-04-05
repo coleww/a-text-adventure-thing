@@ -93,7 +93,7 @@ test('a merchant buys things with coins', function(assert){
 });
 
 test('selling state stops if you do something else', function(assert){
-  assert.expect(2);
+  assert.expect(4);
   var thing = server.create('thing', {name: 'shiny', value: 10});
   var item = server.create('item', {things: [thing.id]});
   var merchant = server.create('merchant', {name: 'a grizzled marine biologist', description: 'HOWDY! Try some blubbery'});
@@ -104,9 +104,11 @@ test('selling state stops if you do something else', function(assert){
   click('a.sell');
   andThen(function(){
     assert.equal(find('div.messages').text().replace(/^\s+|\s+$/g, ''), "What would you like to sell me?");
+    assert.equal(find('a:contains("shiny - 10 coins")').size(), 1);
   });
   click('a.back');
   andThen(function(){
     assert.equal(find('div.messages').text().replace(/^\s+|\s+$/g, ''), "");
+    assert.equal(find('a:contains("shiny - 10 coins")').size(), 0);
   });
 });
