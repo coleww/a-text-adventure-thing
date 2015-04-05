@@ -29,7 +29,8 @@ export default [
     description: 'resting in a lovely garden surrounded by walls.',
     name: 'inner gate',
     west: 1,
-    south: 6
+    south: 6,
+    merchant: 1
   },
   {
     id: 5,
