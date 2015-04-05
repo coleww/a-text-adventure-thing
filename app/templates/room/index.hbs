@@ -1,7 +1,7 @@
 <p class="room-description">you are {{model.description}}.
   {{#if model.items}}
     you see
-    {{#each item in model.items}}
+    {{#each model.items as |item|}}
       {{link-to item.name 'room.item' model item.id class="item"}}.
     {{/each}}
   {{/if}}

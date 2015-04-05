@@ -21,7 +21,7 @@
   {{#if showingKeys}}
     <ul class="keys">
       {{#if hasKeys}}
-        {{#each key in inventory.keys}}
+        {{#each inventory.keys as |key|}}
           <li class="key">
             #{{key.room_id}}: {{key.description}}
           </li>
@@ -35,7 +35,7 @@
   {{else}}
     <ul class="things">
       {{#if hasThings}}
-        {{#each thing in inventory.things}}
+        {{#each inventory.things as |thing|}}
           <li class="thing">
             {{#if selling}}
               <a href="" {{action "sellThing" thing}}>

@@ -9,7 +9,7 @@
     </a>
     inside.
   {{/if}}
-  {{#each thing in model.item.things}}
+  {{#each model.item.things as |thing|}}
     You see
     <a class="thing" href="" {{action "takeThing" thing}}>
       {{thing.name}}
