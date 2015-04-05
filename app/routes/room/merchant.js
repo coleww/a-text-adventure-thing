@@ -18,8 +18,12 @@ export default Ember.Route.extend({
       }
     },
     sell: function(){
-      this.get('inventory').set('message', 'What would you like to sell me?');
-      this.get('inventory').set('selling', true);
+      if(this.get('inventory.hasThings')){
+        this.get('inventory').setProperties({
+          message: 'What would you like to sell me?',
+          selling: true
+        });
+      }
     }
   }
 });
