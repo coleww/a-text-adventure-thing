@@ -10,9 +10,7 @@ export default Ember.Component.extend({
   showingKeys: false,
   showingThings: Ember.computed.not('showingKeys'),
 
-  numCoins: Ember.computed.alias('inventory.coins'),
 
-  selling: Ember.computed.alias('inventory.selling'),
 
   actions: {
     showThing: function(thing){
@@ -23,11 +21,6 @@ export default Ember.Component.extend({
     },
     showThings: function(){
       this.set('showingKeys', false);
-    },
-    sellThing: function(thing){
-      this.get('inventory').incrementProperty('coins', thing.get('value'));
-      this.get('inventory.things').removeObject(thing);
-      this.set('selling', false);
     }
   }
 });

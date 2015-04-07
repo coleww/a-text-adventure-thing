@@ -15,9 +15,6 @@
     </a>
     {{numThings}}
   </span>
-  <span class="coin-count">
-    Coins: {{numCoins}}
-  </span>
   {{#if showingKeys}}
     <ul class="keys">
       {{#if hasKeys}}
@@ -37,15 +34,9 @@
       {{#if hasThings}}
         {{#each inventory.things as |thing|}}
           <li class="thing">
-            {{#if selling}}
-              <a href="" {{action "sellThing" thing}}>
-                {{thing.name}} - {{thing.value}} coins
-              </a>
-            {{else}}
-              <a href="" {{action "showThing" thing}}>
-                {{thing.name}}
-              </a>
-            {{/if}}
+            <a href="" {{action "showThing" thing}}>
+              {{thing.name}}
+            </a>
           </li>
         {{/each}}
       {{else}}

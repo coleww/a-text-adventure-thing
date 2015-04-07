@@ -18,6 +18,6 @@ export default [
     name: 'an old boot',
     description: 'someone took a bite out of it',
     room: 3,
-    treasure: 1
+    things: [2]
   }
 ];

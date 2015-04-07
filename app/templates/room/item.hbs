@@ -15,11 +15,5 @@
       {{thing.name}}
     </a>
   {{/each}}
-  {{#if model.item.treasure}}
-    You find
-    <a class="treasure" href="" {{action "takeTreasure" model.item.treasure}}>
-      {{model.item.treasure.description}}
-    </a>!
-  {{/if}}
 </p>
 {{link-to 'back' 'room' model.room class="back"}}

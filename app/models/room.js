@@ -8,6 +8,5 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   name: DS.attr('string'),
   items: DS.hasMany('item', {async: true}),
-  locked: DS.attr('boolean', {defaultValue: false}),
-  merchant: DS.belongsTo('merchant', {async: true})
+  locked: DS.attr('boolean', {defaultValue: false})
 });

@@ -31,20 +31,4 @@ export default function() {
       thing: thing
     };
   });
-
-  this.get('/treasures/:id', function(db, request){
-    var treasureId = +request.params.id;
-    var treasure = db.treasures.find(treasureId);
-    return {
-      treasure: treasure
-    };
-  });
-
-  this.get('/merchants/:id', function(db, request){
-    var merchantId = +request.params.id;
-    var merchant = db.merchants.find(merchantId);
-    return {
-      merchant: merchant
-    };
-  });
 }
