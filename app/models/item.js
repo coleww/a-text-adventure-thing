@@ -5,6 +5,5 @@ export default DS.Model.extend({
   description: DS.attr('string'),
   room: DS.belongsTo('room', {async: true}), //necessary?
   key: DS.belongsTo('key', {async: true}),
-  things: DS.hasMany('thing', {async: true}),
-  treasure: DS.belongsTo('treasure', {async: true})
+  things: DS.hasMany('thing', {async: true})
 });

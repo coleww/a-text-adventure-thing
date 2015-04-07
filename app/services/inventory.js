@@ -8,10 +8,7 @@ export default Ember.Object.extend({
   },
   things: null,
   keys: null,
-  coins: 0,
   message: "", // TODO: this should be it's own object...thing...
-  selling: false,
-  hasThings: Ember.computed.bool('things.length'),
   hasKey: function(room_id){
     return this.get('keys').any(function(key){
       return key.get("room_id") === room_id;

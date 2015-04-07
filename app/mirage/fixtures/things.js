@@ -7,7 +7,6 @@ export default [
   {
     id: 2,
     name: 'hot cake',
-    description: 'it is...pretty hot i guess',
-    value: 2
+    description: 'it is...pretty hot i guess'
   }
 ];

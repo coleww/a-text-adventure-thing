@@ -81,20 +81,3 @@ test('shows things hidden in that item', function(assert){
     assert.equal(find('.inventory .thing-count').text().replace(/^\s+|\s+$/g, '').replace(/\s+/g, " "), 'Things: 1');
   });
 });
-
-test('shows treasure hidden in that item', function(assert){
-  assert.expect(4);
-  var treasure = server.create('treasure', {value: 10, description: 'some coins'});
-  var item = server.create('item', {treasure: treasure.id});
-  var room = server.create('room', {items: [item.id]});
-  visit('/rooms/'+room.id+'/item/'+item.id);
-  andThen(function(){
-    assert.equal(find('.inventory .coin-count').text().replace(/^\s+|\s+$/g, '').replace(/\s+/g, " "), 'Coins: 0');
-    assert.equal(find('a.treasure').text().replace(/^\s+|\s+$/g, ''), 'some coins');
-  });
-  click('a.treasure');
-  andThen(function(){
-    assert.equal(find('a.treasure').size(), 0);
-    assert.equal(find('.inventory .coin-count').text().replace(/^\s+|\s+$/g, '').replace(/\s+/g, " "), 'Coins: 10');
-  });
-});
