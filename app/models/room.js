@@ -7,7 +7,8 @@ var Room = DS.Model.extend({
   west: DS.belongsTo('room', {inverse: 'east', async: true}),
   description: DS.attr('string'),
   name: DS.attr('string'),
-  items: DS.hasMany('item', {async: true}),
+  things: DS.hasMany('thing', {async: true}),
+  key: DS.belongsTo('key', {async: true}),
   locked: DS.attr('boolean', {defaultValue: false})
 });
 
@@ -21,7 +22,7 @@ Room.reopenClass({
       south: 3,
       east: 4,
       west: 5,
-      items: [1]
+      key: 1
     },
     {
       id: 2,
@@ -36,22 +37,21 @@ Room.reopenClass({
       name: 'main road',
       north: 1,
       south: 2,
-      items: [3]
+      things: [2]
     },
     {
       id: 4,
       description: 'resting in a lovely garden surrounded by walls.',
       name: 'inner gate',
       west: 1,
-      south: 6,
-      merchant: 1
+      south: 6
     },
     {
       id: 5,
       description: 'surrounded by garbage as far as the eye can see.',
       name: 'junkyard',
       east: 1,
-      items: [2]
+      things: [1]
     },
     {
       id: 6,

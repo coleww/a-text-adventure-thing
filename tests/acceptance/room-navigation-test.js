@@ -20,7 +20,7 @@ test('visiting a room', function(assert) {
   visit('/rooms/1');
 
   andThen(function() {
-    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are in the center of a quiet town. you see a lumpy bag. ');
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are in the center of a quiet town. you see a key ');
     // ...
   });
 });
@@ -33,11 +33,11 @@ test('visiting rooms in a cruel and infinite loop', function(assert) {
   });
   click('a.north');
   andThen(function() {
-    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are staring at the edge of the planet. You feel deja vu.. you see an old boot. ');
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are staring at the edge of the planet. You feel deja vu.. You see hot cake ');
   });
   click('a.north');
   andThen(function() {
-    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are in the center of a quiet town. you see a lumpy bag. ');
+    assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are in the center of a quiet town. you see a key ');
   });
 });
 
@@ -74,11 +74,11 @@ test('room is inaccessible without its key', function(assert){
     assert.equal(find('div.messages').text().replace(/^\s+|\s+$/g, ''), 'You need a key to get in there!');
   });
   click('a.west');
-  click('a.item');
   click('a.key');
   click('a.east');
   click('a.south');
   andThen(function(){
+    // stop()
     assert.equal(find('p.room-description').text().replace(/\s+/g, " "), 'you are in a shed. ');
   });
 });
