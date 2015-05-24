@@ -15,7 +15,22 @@
       {{/if}}
     </td>
     <td class="room-detail">
-      {{outlet}}
+      <p class="room-description">you are {{model.description}}.
+        {{#if model.key}}
+          you see
+          <a class="key" href="" {{action "takeKey" model.key}}>
+            {{model.key.description}}
+          </a>
+        {{/if}}
+        {{#if model.things}}
+          You see
+          {{#each model.things as |thing|}}
+            <a class="thing" href="" {{action "takeThing" thing}}>
+              {{thing.name}}
+            </a>
+          {{/each}}
+        {{/if}}
+      </p>
     </td>
     <td class="door">
       {{#if model.east}}
